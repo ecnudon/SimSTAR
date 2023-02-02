@@ -1,0 +1,92 @@
+wandb_project: 'fuck_14lap'
+timestamp: 'test'
+wandb_run: 'test__'
+dataset: '14lap'
+
+# BCEFocalLoss hprams
+gamma: 2
+alpha: 0.25
+tricon: 1
+expanding_rate: 1
+
+# for ablation study
+NoFocalLoss: False
+NoS_Supporting: False
+
+#noisetune
+noisetuneornot: False
+noisetune_lambda: 0.2
+
+#LR scheduler
+lr_scheduler: 'constant'
+warmup_steps: 40
+max_steps: 200
+max_epochs: 150
+epoch_start_monitoring: 40
+
+# Early-Stopping
+monitor_var: 'val_tri_f1'
+min_delta: 0.00005
+opti_mode: 'max'
+patience: 5
+
+# training
+seed: 0
+batch_size: 4
+learning_rate: 1e-5
+save_top_k: 0
+weight_decay: 0.0
+check_val_every_n_epoch: 1
+num_sanity_val_steps: 2
+
+# s_supporting_hparam
+s_supporting_list: [8, 9, 10, 11]
+s_supporting_learning_rate: 1e-4
+single_linear_in_s_supporting: False
+reduction_factor: 8
+
+
+# model related configuration
+model_name_or_path: 'D:\pretrained_models\bert-base-uncased'
+# can it make it automatically?
+num_hidden_layers: 12
+hidden_size: 768
+feature_represent_method: 'concat'
+span_feature_dim: 500
+span_len_embed_dim: 30
+max_length: 100
+
+
+
+# dataset and file configuration
+data_dir: 'data\ASTE-Data-V2-EMNLP2020'
+output_path: 'model_ckpt'
+
+# in this `data_file_format`, the 'xxx' will be replaced into
+# "train", "test" or "dev" in different dataloaders.
+data_file_format: 'xxx_triplets.txt'
+log_dir: 'log'
+
+
+# task oriented dict
+term2idx:
+  aspect: 0
+  opinion: 1
+senti2idx:
+  NEG: 0
+  NEU: 1
+  POS: 2
+
+
+
+
+# seldom change
+gpus: 1
+dropout: 0.1
+
+
+hydra:
+  run:
+    dir: ''
+  job:
+    chdir: False
