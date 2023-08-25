@@ -1,4 +1,4 @@
-wandb_project: 'fuck_14lap'
+wandb_project: '14lap'
 timestamp: 'test'
 wandb_run: 'test__'
 dataset: '14lap'
